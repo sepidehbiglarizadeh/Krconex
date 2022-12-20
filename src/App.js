@@ -1,6 +1,17 @@
+import { Route, Routes } from "react-router-dom";
+import Layout from "./Layout/Layout";
+import routes from "./routes";
 
 function App() {
-  return <div>This is Krconex Online Shop</div>;
+  return (
+    <Layout>
+      <Routes>
+        {routes.map((route) => {
+          return <Route key={Date.now()} {...route} />;
+        })}
+      </Routes>
+    </Layout>
+  );
 }
 
 export default App;
