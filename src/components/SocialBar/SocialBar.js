@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const SocialBar = () => {
   return (
-    <section className="bg-darkGray text-lightGray py-2 px-2 md:px-4 text-md flex justify-between items-center">
+    <section className="bg-darkGray text-lightGray py-2 px-2 md:px-4 text-md flex justify-between items-center mb-2">
       <div className="flex gap-x-1">
         <a
           href="https://www.instagram.com"
