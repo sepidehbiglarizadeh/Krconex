@@ -17,7 +17,7 @@ const Navbar = () => {
       <div
         className={`${
           isShow
-            ? "fixed top-0 left-0 right-0 bottom-0 bg-darkGray opacity-40 z-20"
+            ? "fixed top-0 left-0 right-0 bottom-0 bg-darkGray opacity-40 z-30"
             : ""
         }`}
         onClick={() => setIsShow((prevState) => !prevState)}
@@ -25,7 +25,7 @@ const Navbar = () => {
 
       {/* _____navbar_____ */}
       <nav
-        className={`flex justify-between py-2 px-2 md:px-4 border-t border-b mb-2 bg-white sticky top-0`}
+        className={`flex justify-between py-2 px-2 md:px-4 border-t border-b mb-2 bg-white sticky top-0 z-20`}
       >
         <div className="flex items-center gap-x-2 flex-1 lg:flex-none">
           <button
