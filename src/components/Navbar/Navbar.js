@@ -17,9 +17,10 @@ const Navbar = () => {
       <div
         className={`${
           isShow
-            ? "fixed top-0 left-0 right-0 bottom-0 bg-darkGray opacity-40"
+            ? "fixed top-0 left-0 right-0 bottom-0 bg-darkGray opacity-40 z-20"
             : ""
         }`}
+        onClick={()=>setIsShow((prevState)=>!prevState)}
       ></div>
 
       {/* _____navbar_____ */}
@@ -38,9 +39,9 @@ const Navbar = () => {
 
         {/* _____navbar list_____ */}
         <div
-          className={`bg-darkGray text-lightGray fixed top-0 bottom-0 -left-[100vh]  p-2 w-60 transition-all duration-300 ${
+          className={`bg-darkGray text-lightGray fixed top-0 bottom-0 -left-[100vh] z-30  p-2 w-60 transition-all duration-300 ${
             isShow ? "-left-0" : ""
-          } lg:opacity-100 lg:static lg:bg-white lg:text-darkGray lg:p-0 lg:w-auto lg:flex-1 lg:flex lg:justify-center lg:px-2 lg:px-8`}
+          } lg:opacity-100 lg:static lg:bg-white lg:text-darkGray lg:p-0 lg:w-auto lg:flex-1 lg:flex lg:justify-center lg:px-8`}
         >
           <button
             className="text-2xl lg:hidden"
