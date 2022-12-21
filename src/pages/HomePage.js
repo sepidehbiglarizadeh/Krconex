@@ -1,3 +1,4 @@
+import Gallery from "../components/Gallery/Gallery";
 import Hero from "../components/Hero/Hero";
 import Shipping from "../components/Shipping/Shipping";
 
@@ -6,6 +7,7 @@ const HomePage = () => {
         <main>
             <Hero/>
             <Shipping/>
+            <Gallery/>
         </main>
      );
 }

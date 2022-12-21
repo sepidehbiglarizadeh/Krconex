@@ -8,3 +8,13 @@
     @apply font-ubuntu;
   }
 }
+
+@layer components {
+  .btn {
+    background-color: #fdeb37;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
