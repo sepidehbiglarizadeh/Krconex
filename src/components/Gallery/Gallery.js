@@ -6,7 +6,7 @@ import jean from "../../assets/images/jean.png";
 const Gallery = () => {
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 md:px-16 md:py-16 xl:px-32 mb-2">
-      <div className="h-60 rounded-md overflow-hidden relative xl:row-span-2 xl:h-auto">
+      <div className="h-60 rounded-md overflow-hidden relative xl:row-span-2 xl:h-auto -z-10">
         <img
           src={acc}
           alt="man"
@@ -16,7 +16,7 @@ const Gallery = () => {
           Accessories
         </button>
       </div>
-      <div className="h-60 rounded-md overflow-hidden relative xl:h-auto xl:col-span-2">
+      <div className="h-60 rounded-md overflow-hidden relative xl:h-auto xl:col-span-2 -z-10">
         <img
           src={summ}
           alt="woman"
@@ -26,7 +26,7 @@ const Gallery = () => {
           Summer sale
         </button>
       </div>
-      <div className="h-60 rounded-md overflow-hidden relative xl:h-auto">
+      <div className="h-60 rounded-md overflow-hidden relative xl:h-auto -z-10">
         <img
           src={newArr}
           alt="woman"
@@ -36,7 +36,7 @@ const Gallery = () => {
           New arrivals
         </button>
       </div>
-      <div className="h-60 rounded-md overflow-hidden relative lg:col-span-3 lg:justify-self-center xl:col-span-1 xl:h-auto">
+      <div className="h-60 rounded-md overflow-hidden relative lg:col-span-3 lg:justify-self-center xl:col-span-1 xl:h-auto -z-10">
         <img
           src={jean}
           alt="man"
