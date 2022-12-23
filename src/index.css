@@ -17,4 +17,10 @@
     font-weight: bold;
     text-transform: uppercase;
   }
+  .subscribeBgImage{
+    background-image: url("./assets/images/girls.png");
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }

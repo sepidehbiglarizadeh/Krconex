@@ -40,7 +40,7 @@ const Navbar = () => {
         </div>
 
         {/* navbar list */}
-        <ul className="px-10 text-lg hidden lg:flex gap-x-4  items-center justify-around w-full">
+        <ul className="px-10 text-lg hidden lg:flex flex-1 gap-x-4  items-center justify-around w-full">
           <li className="py-2 hover:font-bold">Men</li>
           <li className="py-2 hover:font-bold">Women</li>
           <li className="py-2 hover:font-bold">Shipping</li>
