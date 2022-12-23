@@ -1,3 +1,4 @@
+import Article from "../components/ArticleSection/Article";
 import Clearance from "../components/Clearance/Clearance";
 import Gallery from "../components/Gallery/Gallery";
 import Hero from "../components/Hero/Hero";
@@ -12,6 +13,7 @@ const HomePage = () => {
             <Gallery/>
             <Clearance/>
             <Subscribe/>
+            <Article/>
         </main>
      );
 }

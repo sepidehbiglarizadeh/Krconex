@@ -5,7 +5,7 @@ const Subscribe = () => {
   const [inputValue, setInputValue] = useState("");
 
   return (
-    <section className="mb-2 subscribeBgImage h-[300px] lg:h-[588px] pt-20 lg:pt-64">
+    <section className="mb-9 subscribeBgImage h-[300px] lg:h-[588px] pt-20 lg:pt-64">
       <h2 className="font-bold text-white text-2xl lg:text-6xl text-center mb-2">
         Subscribe Newsletter
       </h2>

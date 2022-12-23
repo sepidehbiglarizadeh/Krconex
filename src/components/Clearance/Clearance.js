@@ -2,7 +2,7 @@ import woman from "../../assets/images/pexels.png";
 
 const Clearance = () => {
   return (
-    <section className="relative md:mt-10 md:mb-32">
+    <section className="relative md:mt-10 mb-7 md:mb-32">
       <div className="bg-primaryYellow text-white font-bold text-center p-4 md:text-left md:h-80">
         <div className="md:w-2/4 flex flex-col justify-center h-full md:ml-14">
           <p className="text-3xl capitalize md:text-6xl">
