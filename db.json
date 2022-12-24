@@ -1,7 +1,114 @@
 {
   "products": [
     {
-      "id": 1
+      "id": 1,
+      "imageUrl": "./assets/images/products/P1/6494512801_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P1/6494512801_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P1/6494512801_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P1/6494512801_2_2_3.jpg",
+      "gender": "women",
+      "title": "College cotton jacket",
+      "price": 35.99,
+      "type": "jacket"
+    },
+    {
+      "id": 2,
+      "imageUrl": "./assets/images/products/P2/3807019607_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P2/3807019607_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P2/3807019607_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P2/3807019607_2_2_3.jpg",
+      "gender": "women",
+      "title": "Varsity jacket",
+      "price": 49.99,
+      "type": "jacket"
+    },
+    {
+      "id": 3,
+      "imageUrl": "./assets/images/products/P3/1626085513_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P3/1626085513_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P3/1626085513_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P3/1626085513_2_2_3.jpg",
+      "gender": "women",
+      "title": "Flowing satin blazer",
+      "price": 39.99,
+      "type": "coat"
+    },
+    {
+      "id": 4,
+      "imageUrl": "./assets/images/products/P4/5018352800_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P4/5018352800_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P4/5018352800_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P4/5018352800_2_2_3.jpg",
+      "gender": "women",
+      "title": "Mom jeans",
+      "price": 22.99,
+      "type": "jeans"
+    },
+    {
+      "id": 5,
+      "imageUrl": "./assets/images/products/P5/1693644551_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P5/1693644551_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P5/1693644551_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P5/1693644551_2_2_3.jpg",
+      "gender": "women",
+      "title": "Cotton trench coat",
+      "price": 49.99,
+      "type": "coat"
+    },
+    {
+      "id": 6,
+      "imageUrl": "./assets/images/products/P6/8147130300_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P6/8147130300_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P6/8147130300_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P6/8147130300_2_2_3.jpg",
+      "gender": "women",
+      "title": "Smiley® print plush T-shirt",
+      "price": 29.99,
+      "type":"t-shirt"
+    },
+    {
+      "id": 7,
+      "imageUrl": "./assets/images/products/P7/0111019507_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P7/0111019507_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P7/0111019507_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P7/0111019507_2_2_3.jpg",
+      "gender": "women",
+      "title": "Straight fit cargo trousers",
+      "price": 27.99,
+      "type": "trousers"
+    },
+    {
+      "id": 8,
+      "imageUrl": "./assets/images/products/P8/3898200431_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P8/3898200431_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P8/3898200431_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P8/3898200431_2_2_3.jpg",
+      "gender": "men",
+      "title": "Dimension jacket",
+      "price": 50,
+      "type": "jacket"
+    },
+    {
+      "id": 9,
+      "imageUrl": "./assets/images/products/P9/0606665800_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P9/0606665800_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P9/0606665800_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P9/0606665800_2_2_3.jpg",
+      "gender": "men",
+      "title": "Jogger",
+      "price": 60,
+      "type": "trousers"
+    },
+    {
+      "id": 10,
+      "imageUrl": "./assets/images/products/P10/3860388800_2_3_3.jpg",
+      "imageUrl2": "./assets/images/products/P10/3860388800_1_1_3.jpg",
+      "imageUrl3": "./assets/images/products/P10/3860388800_2_1_3.jpg",
+      "imageUrl4": "./assets/images/products/P10/3860388800_2_2_3.jpg",
+      "gender": "men",
+      "title": "Jogger",
+      "price": 55,
+      "type": "jacket"
     }
   ]
 }
