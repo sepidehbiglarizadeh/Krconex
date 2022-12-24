@@ -6,7 +6,7 @@ import {
   FaRegHeart,
   FaTimes,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isShow, setIsShow] = useState(false);
@@ -41,8 +41,16 @@ const Navbar = () => {
 
         {/* navbar list */}
         <ul className="px-10 text-lg hidden lg:flex flex-1 gap-x-4  items-center justify-around w-full">
-          <li className="py-2 hover:font-bold">Men</li>
-          <li className="py-2 hover:font-bold">Women</li>
+          <li className="py-2 hover:font-bold">
+            <NavLink end to={{ pathname: "/products", search: "gender=men" }}>
+              Men
+            </NavLink>
+          </li>
+          <li className="py-2 hover:font-bold">
+            <NavLink to={{ pathname: "/products", search: "gender=women" }}>
+              Women
+            </NavLink>
+          </li>
           <li className="py-2 hover:font-bold">Shipping</li>
           <li className="py-2 hover:font-bold">Clearance</li>
           <li className="py-2 hover:font-bold">Lifestyle</li>
@@ -86,13 +94,52 @@ const Navbar = () => {
           <FaTimes />
         </button>
         <ul className="p-4 text-lg lg:flex lg:gap-x-4  lg:items-center lg:justify-around lg:p-0 w-full">
-          <li className="border-b py-2 hover:font-bold">Men</li>
-          <li className="border-b py-2 hover:font-bold">Women</li>
-          <li className="border-b py-2 hover:font-bold">Shipping</li>
-          <li className="border-b py-2 hover:font-bold">Clearance</li>
-          <li className="border-b py-2 hover:font-bold">Lifestyle</li>
-          <li className="border-b py-2 hover:font-bold">Contact</li>
-          <li className="border-b py-2 hover:font-bold">Article</li>
+          <li
+            className="border-b py-2 hover:font-bold"
+            onClick={() => setIsShow((prevState) => !prevState)}
+          >
+            <NavLink to={{ pathname: "/products", search: "gender=men" }}>
+              Men
+            </NavLink>
+          </li>
+          <li
+            className="border-b py-2 hover:font-bold"
+            onClick={() => setIsShow((prevState) => !prevState)}
+          >
+            <NavLink to={{ pathname: "/products", search: "gender=women" }}>
+              Women
+            </NavLink>
+          </li>
+          <li
+            className="border-b py-2 hover:font-bold"
+            onClick={() => setIsShow((prevState) => !prevState)}
+          >
+            Shipping
+          </li>
+          <li
+            className="border-b py-2 hover:font-bold"
+            onClick={() => setIsShow((prevState) => !prevState)}
+          >
+            Clearance
+          </li>
+          <li
+            className="border-b py-2 hover:font-bold"
+            onClick={() => setIsShow((prevState) => !prevState)}
+          >
+            Lifestyle
+          </li>
+          <li
+            className="border-b py-2 hover:font-bold"
+            onClick={() => setIsShow((prevState) => !prevState)}
+          >
+            Contact
+          </li>
+          <li
+            className="border-b py-2 hover:font-bold"
+            onClick={() => setIsShow((prevState) => !prevState)}
+          >
+            Article
+          </li>
         </ul>
       </div>
     </>

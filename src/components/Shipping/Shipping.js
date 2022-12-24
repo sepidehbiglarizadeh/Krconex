@@ -8,15 +8,15 @@ const Shipping = () => {
                 <span className="text-primaryYellow font-bold text-7xl uppercase">Sale</span>
             </div>
             <div className="text-lightGray flex items-center gap-x-2">
-                <spna className="text-5xl md:text-7xl"><FaShippingFast/></spna>
+                <span className="text-5xl md:text-7xl"><FaShippingFast/></span>
                 <p className="capitalize text-xl font-bold">free and fast shipping</p>
             </div>
             <div className="text-lightGray flex items-center gap-x-2">
-                <spna className="text-5xl md:text-7xl"><FaBoxOpen/></spna>
+                <span className="text-5xl md:text-7xl"><FaBoxOpen/></span>
                 <p className="capitalize text-xl font-bold">30-days Free Return</p>
             </div>
             <div className="text-lightGray flex items-center gap-x-2">
-                <spna className="text-5xl md:text-7xl"><FaLock/></spna>
+                <span className="text-5xl md:text-7xl"><FaLock/></span>
                 <p className="capitalize text-xl font-bold">100% Secure Shopping</p>
             </div>
         </section>
