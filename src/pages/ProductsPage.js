@@ -10,6 +10,7 @@ const ProductsPage = () => {
   const query = queryString.parse(location.search);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(false);
+  const [colsNum, setColsNum] = useState(null);
 
   useEffect(() => {
     const getAllProducts = async () => {
@@ -28,9 +29,11 @@ const ProductsPage = () => {
   if (products.length) {
     renderValue = products.map((product) => {
       return (
-        <Link to={`/product/${product.id}`}>
-          <Product product={product} />
-        </Link>
+        <div key={product.id}>
+          <Link to={`/product/${product.id}`}>
+            <Product product={product} />
+          </Link>
+        </div>
       );
     });
   }
@@ -41,8 +44,18 @@ const ProductsPage = () => {
 
   return (
     <section className="py-6">
-      <Filter products={products} />
-      <div className="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-4 ">
+      <Filter products={products} setColsNum={setColsNum} />
+      <div
+        className={`grid xs:gap-x-4 gap-y-8 ${
+          colsNum === 1
+            ? "grid-cols-1"
+            : colsNum === 2
+            ? "grid-cols-2"
+            : colsNum === 3
+            ? "grid-cols-3"
+            : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        } px-4 `}
+      >
         {renderValue}
       </div>
     </section>

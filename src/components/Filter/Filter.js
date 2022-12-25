@@ -1,22 +1,24 @@
-import { FaThLarge, FaTh } from "react-icons/fa";
+import { FaThLarge, FaTh,FaSquare } from "react-icons/fa";
 
-const Filter = ({ products }) => {
+const Filter = ({ products,setColsNum }) => {
+
   return (
     <div className="flex justify-between items-center border-y border-y-lightGray h-14 mb-6">
       <div className="flex gap-x-4 text-xl px-10 h-full border-r border-r-lightGray">
-        <button>
+        <button className="md:hidden" onClick={()=>setColsNum(1)}><FaSquare/></button>
+        <button onClick={()=>setColsNum(2)}>
           <FaThLarge />
         </button>
-        <button>
+        <button className="hidden md:block" onClick={()=>setColsNum(3)}>
           <FaTh />
         </button>
       </div>
       <div className="flex items-center h-full">
-        <div className="hidden sm:flex px-4  h-full border-l border-l-lightGray items-center  ">
+        <div className="hidden sm:flex px-4  h-full border-l border-l-lightGray items-center flex-1 ">
           <p>Showing {products.length} Products</p>
         </div>
         <div className="flex px-4 h-full border-l border-l-lightGray items-center">
-          <select className="outline-none">
+          <select className="outline-none h-full">
             <option selected disabled>
               Sort
             </option>
@@ -25,7 +27,7 @@ const Filter = ({ products }) => {
           </select>
         </div>
         <div className="flex px-4 h-full border-l border-l-lightGray items-center">
-          <select className="outline-none">
+          <select className="outline-none h-full">
             <option selected disabled>
               Filter
             </option>

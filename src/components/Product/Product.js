@@ -1,11 +1,8 @@
-const Product = ({product}) => {
+const Product = ({ product }) => {
   return (
-    <div
-      key={product.id}
-      className="transition-all duration-500 rounded-md p-3 hover:scale-105 hover:shadow-md"
-    >
+    <div className="transition-all duration-500 rounded-md p-3 hover:scale-105 hover:shadow-md bg-white">
       <img src={product.imageUrl} alt="clothes" className="mb-4" />
-      <h3 className="font-bold text-xl mb-3">{product.title}</h3>
+      <h3 className="font-bold text-sm sm:text-xl mb-3">{product.title}</h3>
       <span className="inline-block mb-3 text-xs bg-gray rounded-xl p-2">
         {product.gender}
       </span>
