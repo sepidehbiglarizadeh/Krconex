@@ -20,7 +20,6 @@ const Hero = () => {
           </Link>
         </button>
       </div>
-      <li><Link to="/products">aaa</Link></li>
     </section>
   );
 };
