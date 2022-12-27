@@ -10,6 +10,7 @@ const ProductsPage = () => {
   const location = useLocation();
   const query = queryString.parse(location.search);
   const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
   const [error, setError] = useState(false);
   const [colsNum, setColsNum] = useState(null);
 
@@ -18,6 +19,7 @@ const ProductsPage = () => {
       try {
         const { data } = await getAllProductsService();
         setProducts(data.filter((item) => item.gender === query.gender));
+        setAllProducts(data.filter((item) => item.gender === query.gender));
       } catch (error) {
         setError(true);
       }
@@ -27,20 +29,32 @@ const ProductsPage = () => {
 
   const sortProductsHandler = (e) => {
     const value = e.target.value;
-    const allProducts = [...products];
+    const cloneAllProducts = [...allProducts];
     if (value === "highest") {
-      const orderedByHighest = _.orderBy(allProducts, ["price"], "desc");
-      setProducts(orderedByHighest);
+      const orderedByHighest = _.orderBy(cloneAllProducts, ["price"], "desc");
+      setAllProducts(orderedByHighest);
     } else {
-      const orderedByLowest = _.orderBy(allProducts, ["price"], "asc");
-      setProducts(orderedByLowest);
+      const orderedByLowest = _.orderBy(cloneAllProducts, ["price"], "asc");
+      setAllProducts(orderedByLowest);
+    }
+  };
+
+  const filterProductsHandler = (e) => {
+    const value = e.target.value;
+    if (value === "") {
+      setAllProducts(products);
+    } else {
+      const filteredProducts = products.filter(
+        (product) => product.type === value
+      );
+      setAllProducts(filteredProducts);
     }
   };
 
   let renderValue = <p>loading...</p>;
 
   if (products.length) {
-    renderValue = products.map((product) => {
+    renderValue = allProducts.map((product) => {
       return (
         <div key={product.id}>
           <Link to={`/product/${product.id}`}>
@@ -58,9 +72,10 @@ const ProductsPage = () => {
   return (
     <section className="py-6">
       <Filter
-        products={products}
+        products={allProducts}
         setColsNum={setColsNum}
         sortProductsHandler={sortProductsHandler}
+        filterProductsHandler={filterProductsHandler}
       />
       <div
         className={`grid xs:gap-x-4 gap-y-8 ${
