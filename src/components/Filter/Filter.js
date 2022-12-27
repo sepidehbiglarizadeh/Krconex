@@ -16,7 +16,7 @@ const filterOptions = [
   {id:6, value: "t-shirt", text: "T-shirt" },
 ];
 
-const Filter = ({ products, setColsNum }) => {
+const Filter = ({ products, setColsNum,sortProductsHandler }) => {
   return (
     <div className="flex justify-between items-center border-y border-y-lightGray h-14 mb-6">
       <div className="flex gap-x-4 text-xl px-10 h-full border-r border-r-lightGray">
@@ -35,7 +35,7 @@ const Filter = ({ products, setColsNum }) => {
           <p>Showing {products.length} Products</p>
         </div>
         <div className="flex px-1 sm:px-4 h-full border-l border-l-lightGray items-center">
-          <Select options={sortOptions} />
+          <Select options={sortOptions} changeHandler={sortProductsHandler}/>
         </div>
         <div className="flex px-1 sm:px-4 h-full border-l border-l-lightGray items-center">
           <Select options={filterOptions} />

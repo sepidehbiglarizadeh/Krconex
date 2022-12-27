@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import getAllProductsService from "../services/getAllProductsService";
 import Filter from "../components/Filter/Filter";
 import Product from "../components/Product/Product";
+import _ from "lodash";
 
 const ProductsPage = () => {
   const location = useLocation();
@@ -23,6 +24,18 @@ const ProductsPage = () => {
     };
     getAllProducts();
   }, [location.search]);
+
+  const sortProductsHandler = (e) => {
+    const value = e.target.value;
+    const allProducts = [...products];
+    if (value === "highest") {
+      const orderedByHighest = _.orderBy(allProducts, ["price"], "desc");
+      setProducts(orderedByHighest);
+    } else {
+      const orderedByLowest = _.orderBy(allProducts, ["price"], "asc");
+      setProducts(orderedByLowest);
+    }
+  };
 
   let renderValue = <p>loading...</p>;
 
@@ -44,7 +57,11 @@ const ProductsPage = () => {
 
   return (
     <section className="py-6">
-      <Filter products={products} setColsNum={setColsNum} />
+      <Filter
+        products={products}
+        setColsNum={setColsNum}
+        sortProductsHandler={sortProductsHandler}
+      />
       <div
         className={`grid xs:gap-x-4 gap-y-8 ${
           colsNum === 1
