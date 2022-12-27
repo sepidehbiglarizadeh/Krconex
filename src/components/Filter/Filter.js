@@ -8,7 +8,7 @@ const sortOptions = [
 ];
 
 const filterOptions = [
-  {id:1, value: "", text: "Filter" },
+  {id:1, value: "", text: "All" },
   {id:2, value: "jacket", text: "Jacket" },
   {id:3, value: "coat", text: "Coat" },
   {id:4, value: "jeans", text: "Jeans" },

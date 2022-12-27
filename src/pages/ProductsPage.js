@@ -51,9 +51,13 @@ const ProductsPage = () => {
     }
   };
 
-  let renderValue = <p>loading...</p>;
+  let renderValue = (
+    <p className="w-full text-center col-span-4 font-bold text-xl capitalize">
+      loading...
+    </p>
+  );
 
-  if (products.length) {
+  if (allProducts.length) {
     renderValue = allProducts.map((product) => {
       return (
         <div key={product.id}>
@@ -63,10 +67,20 @@ const ProductsPage = () => {
         </div>
       );
     });
+  } else {
+    renderValue = (
+      <p className="w-full text-center col-span-4 font-bold text-xl capitalize">
+        There Is No Product
+      </p>
+    );
   }
 
   if (error) {
-    renderValue = <p>Fetching Data Failed</p>;
+    renderValue = (
+      <p className="w-full text-center col-span-4 font-bold text-xl capitalize">
+        Fetching Data Failed
+      </p>
+    );
   }
 
   return (
@@ -78,7 +92,7 @@ const ProductsPage = () => {
         filterProductsHandler={filterProductsHandler}
       />
       <div
-        className={`grid xs:gap-x-4 gap-y-8 ${
+        className={`grid xs:gap-x-4 gap-y-8 min-h-[50vh] ${
           colsNum === 1
             ? "grid-cols-1"
             : colsNum === 2
