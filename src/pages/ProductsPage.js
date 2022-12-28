@@ -67,7 +67,7 @@ const ProductsPage = () => {
         </div>
       );
     });
-  } else {
+  } else if(!allProducts.length){
     renderValue = (
       <p className="w-full text-center col-span-4 font-bold text-xl capitalize">
         There Is No Product
