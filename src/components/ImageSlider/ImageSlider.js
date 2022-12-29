@@ -18,7 +18,7 @@ const ImageSlider = ({
   return (
     // Thumbnails
     <div className="md:flex md:w-1/2">
-      <div className="hidden w-24 h-[80vh] md:flex flex-col gap-y-2 mx-10">
+      <div className="hidden w-24 h-[80vh] md:flex flex-col gap-y-2 mx-14">
         {productImages.map((item, index) => {
           return (
             <div
