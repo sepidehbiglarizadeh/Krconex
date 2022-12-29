@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { FaCircle, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 const ImageSlider = ({
@@ -7,35 +8,52 @@ const ImageSlider = ({
   current,
   setCurrent,
 }) => {
+  const imageRef = useRef();
+
+  const scrollHandler = (index) => {
+    setCurrent(index);
+    imageRef.current.scrollIntoView();
+  };
+
   return (
-    <>
-      <div className="flex justify-center items-center">
-        {productImages.map((slide, index) => {
+    // Thumbnails
+    <div className="md:flex">
+      <div className="hidden w-24 h-[80vh] md:flex flex-col gap-y-2 mx-10">
+        {productImages.map((item, index) => {
           return (
             <div
-              className={` h-[410px] ${
-                index === current ? " opacity-100" : "opacity-0"
-              }`}
               key={index}
+              className="cursor-pointer"
+              onClick={() => scrollHandler(index)}
             >
-              {index === current && (
-                <img
-                  src={slide.image}
-                  alt="clothes"
-                  className="h-full w-full"
-                />
-              )}
+              <img src={item.image} />
             </div>
           );
         })}
       </div>
 
+      {/* Big Images */}
+      <div className="flex justify-center items-center md:flex-col md:justify-start md:items-start md:gap-y-4 md:h-[80vh] md:overflow-auto md:cursor-crosshair">
+        {productImages.map((slide, index) => {
+          return (
+            <div
+              className={` h-[410px] md:h-[80vh] ${
+                index === current ? " block" : "hidden"
+              } md:block`}
+              key={index}
+              ref={current === index ? imageRef : null}
+            >
+              <img src={slide.image} alt="clothes" className="h-full w-full" />
+            </div>
+          );
+        })}
+      </div>
       <CircleBtns
         prevSlide={prevSlide}
         nextSlide={nextSlide}
         setCurrent={setCurrent}
       />
-    </>
+    </div>
   );
 };
 
@@ -43,7 +61,7 @@ export default ImageSlider;
 
 const CircleBtns = ({ prevSlide, nextSlide, setCurrent }) => {
   return (
-    <div className="flex justify-center gap-x-4 my-4">
+    <div className="flex justify-center gap-x-4 my-4 md:hidden">
       <button onClick={prevSlide} className="text-2xl">
         <FaChevronLeft />
       </button>

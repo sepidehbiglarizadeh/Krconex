@@ -36,7 +36,7 @@ const SingleProductPage = () => {
   }, []);
 
   return (
-    <section className="pt-4">
+    <section className="pt-4 mb-6">
       <ImageSlider productImages={productImages} current={current} setCurrent={setCurrent} nextSlide={nextSlide} prevSlide={prevSlide}/>
     </section>
   );
