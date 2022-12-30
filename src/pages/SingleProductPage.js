@@ -5,6 +5,7 @@ import ImageSlider from "../components/ImageSlider/ImageSlider";
 import { FaRegHeart } from "react-icons/fa";
 import RadioBtns from "../common/RadioBtns/RadioBtns";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
+import { useDispatch, useSelector } from "react-redux";
 
 const SingleProductPage = () => {
   const params = useParams();
