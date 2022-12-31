@@ -90,7 +90,7 @@ const CartDetail = ({ cart, isShowDetail, setIsShowDetail }) => {
       >
         <div className="flex justify-between items-center mb-2">
           <span>Subtotal</span>
-          <span className="font-bold">${cart.total}</span>
+          <span className="font-bold">${cart.total.toFixed(2)}</span>
         </div>
         <div className="flex justify-between items-center">
           <span>Delivery costs</span>
