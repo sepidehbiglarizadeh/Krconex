@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Backdrop from "../Backdrop/Backdrop";
 import {
   FaTimes,
@@ -7,10 +7,12 @@ import {
   FaTrashAlt,
 } from "react-icons/fa";
 import { useState } from "react";
+import { deleteFromCart } from "../../redux/cart/cartActions";
 
 const Cart = ({ showCart, setShowCart }) => {
   const cart = useSelector((state) => state.cart);
   const [isShowDetail, setIsShowDetail] = useState(false);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -30,7 +32,7 @@ const Cart = ({ showCart, setShowCart }) => {
         </h2>
         <section className="h-full overflow-auto border-t border-lightGray">
           {cart.cart.map((item) => (
-            <CartItem item={item} />
+            <CartItem item={item} dispatch={dispatch} />
           ))}
         </section>
         <CartDetail
@@ -45,7 +47,7 @@ const Cart = ({ showCart, setShowCart }) => {
 
 export default Cart;
 
-const CartItem = ({ item }) => {
+const CartItem = ({ item, dispatch }) => {
   return (
     <div className="flex justify-between gap-x-2 border-b border-lightGray py-4">
       <div className="flex items-center gap-x-2">
@@ -69,7 +71,7 @@ const CartItem = ({ item }) => {
           </button>
         </div>
         <div className="text-sm pl-2">
-          <button>
+          <button onClick={() => dispatch(deleteFromCart(item))}>
             <FaTrashAlt />
           </button>
         </div>

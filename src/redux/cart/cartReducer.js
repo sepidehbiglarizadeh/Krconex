@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from "./cartTypes";
+import { ADD_TO_CART, DELETE_FROM_CART } from "./cartTypes";
 
 const initialState = {
   cart: [],
@@ -28,6 +28,31 @@ const cartReducer = (state = initialState, action) => {
         cart: updatedCart,
         total: state.total + action.payload.product.price,
       };
+    }
+    case DELETE_FROM_CART: {
+      const updatedCart = [...state.cart];
+      const updatedItemIndex = updatedCart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const updatedItem = { ...updatedCart[updatedItemIndex] };
+      if (updatedItem.quantity === 1) {
+        const filteredCart = updatedCart.filter(
+          (item) => item.id !== action.payload.id
+        );
+        return {
+          ...state,
+          cart: filteredCart,
+          total: state.total - action.payload.price,
+        };
+      } else {
+        updatedItem.quantity--;
+        updatedCart[updatedItemIndex] = updatedItem;
+        return {
+          ...state,
+          cart: updatedCart,
+          total: state.total - action.payload.price,
+        };
+      }
     }
     default:
       return state;
