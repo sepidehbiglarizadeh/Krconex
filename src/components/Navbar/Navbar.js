@@ -6,10 +6,12 @@ import {
   FaRegHeart,
   FaTimes,
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isShow, setIsShow] = useState(false);
+  const cart = useSelector((state) => state.cart);
 
   return (
     <>
@@ -73,7 +75,10 @@ const Navbar = () => {
         {/* _____navbar icons_____ */}
         <div className="flex items-center gap-x-2 text-lg">
           <Link to="/cart">
-            <FaShoppingBasket />
+            <div className="relative">
+              <FaShoppingBasket />
+              <span className={`${cart.cart.length ? "absolute -top-4 bg-primaryYellow rounded-full w-5 h-5 text-xs flex justify-center items-center" : "hidden"}`}>{cart.cart.length}</span>
+            </div>
           </Link>
           <Link to="/favourite">
             <FaRegHeart />

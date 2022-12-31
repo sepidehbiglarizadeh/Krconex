@@ -7,6 +7,7 @@ import RadioBtns from "../common/RadioBtns/RadioBtns";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cartActions";
+import checkInCart from "../utils/checkInCart";
 
 const SingleProductPage = () => {
   const params = useParams();
@@ -22,7 +23,8 @@ const SingleProductPage = () => {
   const [current, setCurrent] = useState(0);
   const [sizeValue, setSizeValue] = useState("");
 
-  const dispatch= useDispatch();
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
   const nextSlide = () => {
     setCurrent(current === productImages.length - 1 ? 0 : current + 1);
@@ -72,10 +74,16 @@ const SingleProductPage = () => {
           />
           <button
             className="bg-primaryYellow w-full md:w-[70%] rounded-md py-2 uppercase font-bold disabled:opacity-50"
-            disabled={sizeValue === "" ? true : false}
-            onClick={()=>dispatch(addToCart({product,size:sizeValue}))}
+            disabled={
+              sizeValue === ""
+                ? true
+                : checkInCart(cart.cart, product)
+                ? true
+                : false
+            }
+            onClick={() => dispatch(addToCart({ product, size: sizeValue }))}
           >
-            Add To Cart
+            {checkInCart(cart.cart, product) ? "In Cart" : "Add To Cart"}
           </button>
         </div>
         <ProductDescription />
