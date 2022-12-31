@@ -8,7 +8,26 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART: {
-        return state;
+      const updatedCart = [...state.cart];
+      const updatedItemIndex = updatedCart.findIndex(
+        (item) => item.id === action.payload.product.id
+      );
+      if (updatedItemIndex < 0) {
+        updatedCart.push({
+          ...action.payload.product,
+          quantity: 1,
+          size: action.payload.size,
+        });
+      } else {
+        const updatedItem = { ...updatedCart[updatedItemIndex] };
+        updatedItem.quantity++;
+        updatedCart[updatedItemIndex] = updatedItem;
+      }
+      return {
+        ...state,
+        cart: updatedCart,
+        total: state.total + action.payload.product.price,
+      };
     }
     default:
       return state;

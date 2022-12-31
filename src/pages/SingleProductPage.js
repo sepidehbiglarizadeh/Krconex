@@ -6,6 +6,7 @@ import { FaRegHeart } from "react-icons/fa";
 import RadioBtns from "../common/RadioBtns/RadioBtns";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../redux/cart/cartActions";
 
 const SingleProductPage = () => {
   const params = useParams();
@@ -20,6 +21,8 @@ const SingleProductPage = () => {
     : [];
   const [current, setCurrent] = useState(0);
   const [sizeValue, setSizeValue] = useState("");
+
+  const dispatch= useDispatch();
 
   const nextSlide = () => {
     setCurrent(current === productImages.length - 1 ? 0 : current + 1);
@@ -70,6 +73,7 @@ const SingleProductPage = () => {
           <button
             className="bg-primaryYellow w-full md:w-[70%] rounded-md py-2 uppercase font-bold disabled:opacity-50"
             disabled={sizeValue === "" ? true : false}
+            onClick={()=>dispatch(addToCart({product,size:sizeValue}))}
           >
             Add To Cart
           </button>
