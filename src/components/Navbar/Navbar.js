@@ -8,24 +8,17 @@ import {
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
+import Backdrop from "../Backdrop/Backdrop";
+import Cart from "../Cart/Cart";
 
 const Navbar = () => {
   const [isShow, setIsShow] = useState(false);
+  const [showCart,setShowCart]=useState(false)
   const cart = useSelector((state) => state.cart);
 
   return (
     <>
-      {/* _____back drop_____ */}
-      <div
-        className={`${
-          isShow
-            ? "fixed top-0 left-0 right-0 bottom-0 bg-darkGray opacity-40 z-30"
-            : ""
-        }`}
-        onClick={() => setIsShow((prevState) => !prevState)}
-      ></div>
-
-      {/* _____navbar_____ */}
+      <Backdrop isShow={isShow} setIsShow={setIsShow}/>
       <nav
         className={`flex justify-between py-2 px-2 md:px-4 border-t border-b mb-2 bg-white sticky top-0 z-20`}
       >
@@ -74,12 +67,10 @@ const Navbar = () => {
 
         {/* _____navbar icons_____ */}
         <div className="flex items-center gap-x-2 text-lg">
-          <Link to="/cart">
-            <div className="relative">
+            <button className="relative" onClick={()=>setShowCart((prevState)=>!prevState)}>
               <FaShoppingBasket />
               <span className={`${cart.cart.length ? "absolute -top-4 bg-primaryYellow rounded-full w-5 h-5 text-xs flex justify-center items-center" : "hidden"}`}>{cart.cart.length}</span>
-            </div>
-          </Link>
+            </button>
           <Link to="/favourite">
             <FaRegHeart />
           </Link>
@@ -147,6 +138,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
+      <Cart showCart={showCart} setShowCart={setShowCart} />
     </>
   );
 };

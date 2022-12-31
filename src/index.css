@@ -23,4 +23,7 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+  .topShadow {
+    box-shadow: 0 -11px 11px -11px rgb(0 0 0 / 9%);
+  }
 }
