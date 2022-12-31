@@ -73,7 +73,7 @@ const SingleProductPage = () => {
             radioChangeHandler={radioChangeHandler}
           />
           <button
-            className="bg-primaryYellow w-full md:w-[70%] rounded-md py-2 uppercase font-bold disabled:opacity-50"
+            className="bg-primaryYellow w-full lg:w-[70%] rounded-md py-2 uppercase font-bold disabled:opacity-50"
             disabled={
               sizeValue === ""
                 ? true

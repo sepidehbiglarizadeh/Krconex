@@ -7,23 +7,23 @@ import {
   FaTrashAlt,
 } from "react-icons/fa";
 import { useState } from "react";
-import { deleteFromCart } from "../../redux/cart/cartActions";
+import { addToCart, deleteFromCart } from "../../redux/cart/cartActions";
 
-const Cart = ({ showCart, setShowCart }) => {
+const Cart = ({ showCart, setShowCart, displayCart, setFixed }) => {
   const cart = useSelector((state) => state.cart);
   const [isShowDetail, setIsShowDetail] = useState(false);
   const dispatch = useDispatch();
 
   return (
     <>
-      <Backdrop isShow={showCart} setIsShow={setShowCart} />
+      <Backdrop isShow={showCart} setIsShow={setShowCart} setFixed={setFixed} />
       <div
         className={`fixed top-0 bottom-0 -right-[500vw] bg-white z-40 w-[85%] sm:w-3/5 md:w-[30%] p-4 md:px-7  transition-all duration-300 flex flex-col ${
           showCart ? "-right-0" : ""
         }`}
       >
         <div className="flex justify-end text-2xl mb-3">
-          <button onClick={() => setShowCart((prevState) => !prevState)}>
+          <button onClick={displayCart}>
             <FaTimes />
           </button>
         </div>
@@ -62,11 +62,11 @@ const CartItem = ({ item, dispatch }) => {
       </div>
       <div className="flex items-center">
         <div className="flex flex-col items-center text-sm border-r border-lightGray pr-2">
-          <button>
+          <button onClick={() => dispatch(addToCart({ product: item }))}>
             <FaChevronUp />
           </button>
           <span>{item.quantity}</span>
-          <button>
+          <button onClick={() => dispatch(deleteFromCart(item))}>
             <FaChevronDown />
           </button>
         </div>

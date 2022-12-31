@@ -43,7 +43,7 @@ const ImageSlider = ({
               key={index}
               ref={current === index ? imageRef : null}
             >
-              <img src={slide.image} alt="clothes" className="h-full w-full" />
+              <img src={slide.image} alt="clothes" className="h-full w-full " />
             </div>
           );
         })}
