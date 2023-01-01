@@ -18,22 +18,22 @@ const ImageSlider = ({
   return (
     // Thumbnails
     <div className="md:flex md:w-1/2">
-      <div className="hidden w-24 h-[80vh] md:flex flex-col gap-y-2 mx-14">
+      <div className="hidden w-24 md:flex flex-col gap-y-2 mx-14">
         {productImages.map((item, index) => {
           return (
             <div
               key={index}
-              className="cursor-pointer"
+              className="cursor-pointer h-[100px w-16] "
               onClick={() => scrollHandler(index)}
             >
-              <img src={item.image} />
+              <img src={item.image}className="h-full"/>
             </div>
           );
         })}
       </div>
 
       {/* Big Images */}
-      <div className="flex justify-center items-center md:flex-col md:justify-start md:items-start md:gap-y-4 md:h-[80vh] md:overflow-auto md:cursor-crosshair">
+      <div className="flex justify-center items-center md:flex-col md:justify-start md:items-start md:gap-y-4 md:h-[500px] md:w-[400px] md:overflow-auto md:cursor-crosshair">
         {productImages.map((slide, index) => {
           return (
             <div

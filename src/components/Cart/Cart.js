@@ -18,7 +18,7 @@ const Cart = ({ showCart, setShowCart, displayCart, setFixed }) => {
     <>
       <Backdrop isShow={showCart} setIsShow={setShowCart} setFixed={setFixed} />
       <div
-        className={`fixed top-0 bottom-0 -right-[500vw] bg-white z-40 w-[85%] sm:w-3/5 md:w-[30%] p-4 md:px-7  transition-all duration-300 flex flex-col ${
+        className={`fixed top-0 bottom-0 -right-[500vw] bg-white z-40 w-[85%] sm:w-3/5 md:w-1/3 p-4 md:px-7  transition-all duration-300 flex flex-col ${
           showCart ? "-right-0" : ""
         }`}
       >
