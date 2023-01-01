@@ -8,6 +8,7 @@ module.exports = {
       lightGray: "#C2C2C2",
       gray: "#e5e5e5",
       white: "#fff",
+      red: "#dc2626",
     },
     fontFamily: {
       ubuntu: ["Ubuntu", "sans-serif"],
