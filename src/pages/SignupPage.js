@@ -49,6 +49,7 @@ const SignupPage = () => {
       navigate("/");
     } catch (error) {
       setError("Email already exists");
+      console.log(error);
     }
   };
 

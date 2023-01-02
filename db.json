@@ -113,9 +113,9 @@
   ],
   "users": [
     {
-      "name": "test123",
       "email": "test@gmail.com",
-      "password": "12345678",
+      "password": "$2a$10$1kUa2Pzt2PzGo.CVp.XC2.NPUJIXMqNB2rUmBxPpg3aMqjvPhTwee",
+      "name": "test123",
       "phoneNumber": "00000000000",
       "id": 1
     }
