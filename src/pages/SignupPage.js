@@ -23,7 +23,7 @@ const validationSchema = Yup.object({
     .matches(/^[0-9]{11}$/, "Phone number is wrong")
     .nullable(),
   password: Yup.string()
-    .required("پسورد اجباری است")
+    .required("Password is required")
     .min(8, "Password length is short - it must be at leat 8 characters"),
   passwordConfirm: Yup.string().oneOf(
     [Yup.ref("password"), null],
