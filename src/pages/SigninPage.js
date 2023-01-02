@@ -5,7 +5,7 @@ import fashionImage from "../../src/assets/images/fashion.jpg";
 import Input from "../common/Input/Input";
 import loginService from "../services/loginService";
 import { useDispatch } from "react-redux";
-import { addAuth } from "../redux/auth/authActions";
+import { addAuth, addAuthToStorage } from "../redux/auth/authActions";
 import { useState } from "react";
 
 const initialValues = {
@@ -30,6 +30,7 @@ const SigninPage = () => {
       const { data } = await loginService(values);
       setError(null);
       dispatch(addAuth(data));
+      dispatch(addAuthToStorage(data));
       navigate("/");
     } catch (error) {
       setError("Email or Password is wrong");

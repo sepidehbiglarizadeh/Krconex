@@ -4,7 +4,7 @@ import {
   GET_AUTH_FROM_STOTAGE,
 } from "./authTypes";
 
-const auth = {};
+const auth = null;
 const LOCAL_STORAGE_AUTH_KEY = "authState";
 
 const authReducer = (state = auth, action) => {
@@ -21,9 +21,9 @@ const authReducer = (state = auth, action) => {
       return state;
     }
     case GET_AUTH_FROM_STOTAGE: {
-      const data =
+      const { accessToken, user } =
         JSON.parse(localStorage.getItem(LOCAL_STORAGE_AUTH_KEY)) || false;
-      return { ...state, data };
+      return { ...state, accessToken, user };
     }
 
     default:
