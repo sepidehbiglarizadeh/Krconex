@@ -64,7 +64,7 @@
       "gender": "women",
       "title": "Smiley® print plush T-shirt",
       "price": 29.99,
-      "type":"t-shirt"
+      "type": "t-shirt"
     },
     {
       "id": 7,
@@ -111,5 +111,13 @@
       "type": "jacket"
     }
   ],
-  "users":[]
+  "users": [
+    {
+      "name": "test123",
+      "email": "test@gmail.com",
+      "password": "12345678",
+      "phoneNumber": "00000000000",
+      "id": 1
+    }
+  ]
 }

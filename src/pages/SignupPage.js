@@ -1,7 +1,11 @@
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Input from "../common/Input/Input";
+import signupService from "../services/signupService";
+import { addAuthToStorage } from "../../src/redux/auth/authActions";
+import { useState } from "react";
 
 const initialValues = {
   name: "",
@@ -32,8 +36,20 @@ const validationSchema = Yup.object({
 });
 
 const SignupPage = () => {
-  const onSubmit = () => {
-    console.log("form submited");
+  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const onSubmit = async (values) => {
+    const { name, email, password, phoneNumber } = values;
+    const userData = { name, email, password, phoneNumber };
+    try {
+      const { data } = await signupService(userData);
+      dispatch(addAuthToStorage(data));
+      navigate("/");
+    } catch (error) {
+      setError("Email already exists");
+    }
   };
 
   const formik = useFormik({
@@ -46,7 +62,7 @@ const SignupPage = () => {
 
   return (
     <section className="max-w-lg mx-auto shadow-lg my-6 rounded-md overflow-hidden">
-      <form className="px-4 py-10">
+      <form className="px-4 py-10" onSubmit={formik.handleSubmit}>
         <Input formik={formik} name="name" label="Name" />
         <Input formik={formik} name="email" label="Email" type="email" />
         <Input
@@ -73,6 +89,7 @@ const SignupPage = () => {
         >
           Register
         </button>
+        {error && <p className="text-red text-sm">{error}</p>}
         <p className="text-sm ">
           Already Got an Account?
           <Link to="/signin">
