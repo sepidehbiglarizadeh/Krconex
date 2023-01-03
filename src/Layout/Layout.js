@@ -3,14 +3,15 @@ import { useDispatch } from "react-redux";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import SocialBar from "../components/SocialBar/SocialBar";
-import { getAuthFromStorage } from "../redux/auth/authActions";
+import { addAuth, getAuthFromStorage } from "../redux/auth/authActions";
 
 const Layout = ({ children }) => {
   const [fixed, setFixed] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAuthFromStorage());
+    const data = JSON.parse(localStorage.getItem("authState")) || false;
+    dispatch(addAuth(data));
   }, []);
 
   return (

@@ -1,3 +1,1 @@
-export const ADD_AUTH="ADD_AUTH"
-export const ADD_AUTH_TO_STORAGE = "ADD_AUTH_TO_STORAGE";
-export const GET_AUTH_FROM_STOTAGE = "GET_AUTH_FROM_STOTAGE";
+export const ADD_AUTH = "ADD_AUTH";

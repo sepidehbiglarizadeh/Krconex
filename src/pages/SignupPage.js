@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Input from "../common/Input/Input";
 import signupService from "../services/signupService";
-import { addAuthToStorage } from "../../src/redux/auth/authActions";
+import { addAuth } from "../../src/redux/auth/authActions";
 import { useState } from "react";
 
 const initialValues = {
@@ -45,7 +45,8 @@ const SignupPage = () => {
     const userData = { name, email, password, phoneNumber };
     try {
       const { data } = await signupService(userData);
-      dispatch(addAuthToStorage(data));
+      dispatch(addAuth(data));
+      localStorage.setItem("authState", JSON.stringify(data));
       navigate("/");
     } catch (error) {
       setError("Email already exists");
