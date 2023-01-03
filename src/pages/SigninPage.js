@@ -4,9 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import fashionImage from "../../src/assets/images/fashion.jpg";
 import Input from "../common/Input/Input";
 import loginService from "../services/loginService";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addAuth } from "../redux/auth/authActions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "../hooks/useQuery";
 
 const initialValues = {
   email: "",
@@ -22,19 +23,23 @@ const validationSchema = Yup.object({
 
 const SigninPage = () => {
   const [error, setError] = useState(null);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const query = useQuery();
+  const redirect = query.get("redirect") || "";
+
+  useEffect(() => {
+    if (auth.auth.user) navigate(`/${redirect}`);
+  }, [auth.auth, redirect]);
 
   const onSubmit = async (values) => {
     try {
       const { data } = await loginService(values);
       setError(null);
       dispatch(addAuth(data));
-      localStorage.setItem(
-        "authState",
-        JSON.stringify(data)
-      );
-      navigate("/");
+      localStorage.setItem("authState", JSON.stringify(data));
+      navigate(`/${redirect}`);
     } catch (error) {
       setError("Email or Password is wrong");
     }

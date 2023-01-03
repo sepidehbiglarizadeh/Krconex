@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { useState } from "react";
 import { addToCart, deleteFromCart } from "../../redux/cart/cartActions";
+import { Link } from "react-router-dom";
 
 const Cart = ({ showCart, setShowCart, displayCart, setFixed }) => {
   const cart = useSelector((state) => state.cart);
@@ -18,8 +19,8 @@ const Cart = ({ showCart, setShowCart, displayCart, setFixed }) => {
     <>
       <Backdrop isShow={showCart} setIsShow={setShowCart} setFixed={setFixed} />
       <div
-        className={`fixed top-0 bottom-0 -right-[500vw] bg-white z-40 w-[85%] sm:w-3/5 md:w-1/3 p-4 md:px-7  transition-all duration-300 flex flex-col ${
-          showCart ? "-right-0" : ""
+        className={`fixed top-0 bottom-0  bg-white z-40 w-[85%] sm:w-3/5 md:w-1/3 p-4 md:px-7  transition-all duration-300 flex flex-col ${
+          showCart ? "-right-0 " : "-right-[500vw]"
         }`}
       >
         <div className="flex justify-end text-2xl mb-3">
@@ -39,6 +40,7 @@ const Cart = ({ showCart, setShowCart, displayCart, setFixed }) => {
           cart={cart}
           isShowDetail={isShowDetail}
           setIsShowDetail={setIsShowDetail}
+          displayCart={displayCart}
         />
       </div>
     </>
@@ -52,7 +54,7 @@ const CartItem = ({ item, dispatch }) => {
     <div className="flex justify-between gap-x-2 border-b border-lightGray py-4">
       <div className="flex items-center gap-x-2">
         <div className="max-w-[120px]">
-          <img src={item.imageUrl} />
+          <img src={item.imageUrl} alt="clothes" />
         </div>
         <div className=" flex flex-col gap-y-3 text-sm">
           <span className="font-bold ">${item.price}</span>
@@ -80,7 +82,7 @@ const CartItem = ({ item, dispatch }) => {
   );
 };
 
-const CartDetail = ({ cart, isShowDetail, setIsShowDetail }) => {
+const CartDetail = ({ cart, isShowDetail, setIsShowDetail, displayCart }) => {
   return (
     <section className="topShadow">
       <div
@@ -112,12 +114,15 @@ const CartDetail = ({ cart, isShowDetail, setIsShowDetail }) => {
             </button>
           </div>
         </div>
-        <button
-          className="bg-darkGray text-white py-2 rounded-md w-full uppercase font-bold p-2 disabled:opacity-50"
-          disabled={cart.cart.length ? false : true}
-        >
-          Process Order
-        </button>
+        <Link to="/signin?redirect=checkout">
+          <button
+            className="bg-darkGray text-white py-2 rounded-md w-full uppercase font-bold p-2 disabled:opacity-50"
+            disabled={cart.cart.length ? false : true}
+            onClick={displayCart}
+          >
+            Process Order
+          </button>
+        </Link>
       </div>
     </section>
   );

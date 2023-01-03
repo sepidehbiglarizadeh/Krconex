@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import Input from "../common/Input/Input";
 import signupService from "../services/signupService";
 import { addAuth } from "../../src/redux/auth/authActions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useQuery } from "../hooks/useQuery";
 
 const initialValues = {
   name: "",
@@ -37,8 +38,15 @@ const validationSchema = Yup.object({
 
 const SignupPage = () => {
   const [error, setError] = useState(null);
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const query = useQuery();
+  const redirect = query.get("redirect") || "";
+
+  useEffect(() => {
+    if (auth.auth.user) navigate(`/${redirect}`);
+  }, [auth.auth, redirect]);
 
   const onSubmit = async (values) => {
     const { name, email, password, phoneNumber } = values;
@@ -47,7 +55,7 @@ const SignupPage = () => {
       const { data } = await signupService(userData);
       dispatch(addAuth(data));
       localStorage.setItem("authState", JSON.stringify(data));
-      navigate("/");
+      navigate(`/${redirect}`);
     } catch (error) {
       setError("Email already exists");
       console.log(error);
