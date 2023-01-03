@@ -114,9 +114,11 @@
   "users": [
     {
       "email": "test@gmail.com",
-      "password": "$2a$10$68so8QD4PwWH6DE5aMzj4OnPw48TVXF9nLaA6xZcV2GDxWz0wJ8H.",
+      "password": "$2a$10$.9PRbl7EDeXMUUrPRyTls.4WdHkLklrxaZQIBPElDLqAfr2MGklg2",
       "name": "test123",
       "phoneNumber": "00000000000",
+      "address": "",
+      "postalCode": "",
       "id": 1
     }
   ]
