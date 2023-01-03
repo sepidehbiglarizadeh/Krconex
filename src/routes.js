@@ -16,7 +16,7 @@ const routes = [
   { path: "/favourite", element: <FavouritePage /> },
   { path: "/products", element: <ProductsPage /> },
   { path: "/product/:id", element: <SingleProductPage /> },
-  { path: "/profile/*", element: <ProfilePage /> },
+  { path: "/profile", element: <ProfilePage /> },
   { path: "/checkout", element: <CheckoutPage /> },
 ];
 

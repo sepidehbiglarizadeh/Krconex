@@ -50,7 +50,7 @@ const SignupPage = () => {
 
   const onSubmit = async (values) => {
     const { name, email, password, phoneNumber } = values;
-    const userData = { name, email, password, phoneNumber,address:"",postalCode:"" };
+    const userData = { name, email, password, phoneNumber };
     try {
       const { data } = await signupService(userData);
       dispatch(addAuth(data));

@@ -69,20 +69,20 @@ const SocialBar = () => {
           </div>
           {auth.auth.user && (
             <div
-              className={` bg-darkGray text-white absolute -bottom-[65px] right-0 z-50 w-28 p-2 text-sm ${
+              className={` bg-darkGray text-white absolute -bottom-[66px] right-0 z-50 w-28 p-2 text-sm ${
                 isShow ? "block" : "hidden"
               }`}
             >
               <Link to="/profile">
                 <span
-                  className="inline-block mb-1"
+                  className="block mb-1"
                   onClick={() => setIsShow((prevState) => !prevState)}
                 >
                   Profile
                 </span>
               </Link>
               <span
-                className="inline-block cursor-pointer"
+                className="block cursor-pointer"
                 onClick={signoutUser}
               >
                 Sign-Out
