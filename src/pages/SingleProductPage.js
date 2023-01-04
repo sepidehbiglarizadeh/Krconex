@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getOneProductService from "../services/getOneProductService";
 import ImageSlider from "../components/ImageSlider/ImageSlider";
-import { FaRegHeart,FaHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import RadioBtns from "../common/RadioBtns/RadioBtns";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cartActions";
-import checkInCart from "../utils/checkInCart";
+import checkIn from "../utils/checkIn";
 import { addToFav } from "../redux/fav/favActions";
 
 const SingleProductPage = () => {
@@ -25,7 +25,7 @@ const SingleProductPage = () => {
   const [sizeValue, setSizeValue] = useState("");
 
   const cart = useSelector((state) => state.cart);
-  const fav = useSelector((state)=> state.fav.favProducts)
+  const fav = useSelector((state) => state.fav.favProducts);
   const dispatch = useDispatch();
 
   console.log(fav);
@@ -70,7 +70,7 @@ const SingleProductPage = () => {
               className="flex items-center gap-x-2 font-bold"
               onClick={() => dispatch(addToFav(product))}
             >
-              <FaRegHeart />
+              {checkIn(fav, product) ? <FaHeart /> : <FaRegHeart />}
               Add To WishList
             </button>
           </div>
@@ -84,13 +84,13 @@ const SingleProductPage = () => {
             disabled={
               sizeValue === ""
                 ? true
-                : checkInCart(cart.cart, product)
+                : checkIn(cart.cart, product)
                 ? true
                 : false
             }
             onClick={() => dispatch(addToCart({ product, size: sizeValue }))}
           >
-            {checkInCart(cart.cart, product) ? "In Cart" : "Add To Cart"}
+            {checkIn(cart.cart, product) ? "In Cart" : "Add To Cart"}
           </button>
         </div>
         <ProductDescription />

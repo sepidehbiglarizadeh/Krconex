@@ -15,6 +15,7 @@ const Navbar = ({ setFixed }) => {
   const [isShow, setIsShow] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const cart = useSelector((state) => state.cart);
+  const fav = useSelector((state) => state.fav.favProducts);
 
   const displayMenu = () => {
     setIsShow((prevState) => !prevState);
@@ -88,7 +89,18 @@ const Navbar = ({ setFixed }) => {
               </span>
             </button>
             <Link to="/favourite">
-              <FaRegHeart />
+              <button className="relative">
+                <span
+                  className={`${
+                    fav.length
+                      ? "absolute -top-4 bg-primaryYellow rounded-full w-5 h-5 text-xs flex justify-center items-center"
+                      : "hidden"
+                  }`}
+                >
+                  {fav.length}
+                </span>
+                <FaRegHeart />
+              </button>
             </Link>
           </div>
         </nav>
@@ -106,7 +118,7 @@ const Navbar = ({ setFixed }) => {
         <ul className="p-4 text-lg lg:flex lg:gap-x-4  lg:items-center lg:justify-around lg:p-0 w-full">
           <li
             className="border-b py-2 hover:font-bold"
-            onClick={() => setIsShow((prevState) => !prevState)}
+            onClick={displayMenu}
           >
             <NavLink to={{ pathname: "/products", search: "gender=men" }}>
               Men
@@ -114,7 +126,7 @@ const Navbar = ({ setFixed }) => {
           </li>
           <li
             className="border-b py-2 hover:font-bold"
-            onClick={() => setIsShow((prevState) => !prevState)}
+            onClick={displayMenu}
           >
             <NavLink to={{ pathname: "/products", search: "gender=women" }}>
               Women
@@ -122,31 +134,31 @@ const Navbar = ({ setFixed }) => {
           </li>
           <li
             className="border-b py-2 hover:font-bold"
-            onClick={() => setIsShow((prevState) => !prevState)}
+            onClick={displayMenu}
           >
             Shipping
           </li>
           <li
             className="border-b py-2 hover:font-bold"
-            onClick={() => setIsShow((prevState) => !prevState)}
+            onClick={displayMenu}
           >
             Clearance
           </li>
           <li
             className="border-b py-2 hover:font-bold"
-            onClick={() => setIsShow((prevState) => !prevState)}
+            onClick={displayMenu}
           >
             Lifestyle
           </li>
           <li
             className="border-b py-2 hover:font-bold"
-            onClick={() => setIsShow((prevState) => !prevState)}
+            onClick={displayMenu}
           >
             Contact
           </li>
           <li
             className="border-b py-2 hover:font-bold"
-            onClick={() => setIsShow((prevState) => !prevState)}
+            onClick={displayMenu}
           >
             Article
           </li>
