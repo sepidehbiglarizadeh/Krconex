@@ -51,11 +51,7 @@ const ProductsPage = () => {
     }
   };
 
-  let renderValue = (
-    <p className="w-full text-center col-span-4 font-bold text-xl capitalize">
-      loading...
-    </p>
-  );
+  let renderValue;
 
   if (allProducts.length) {
     renderValue = allProducts.map((product) => {
@@ -67,10 +63,10 @@ const ProductsPage = () => {
         </div>
       );
     });
-  } else if(!allProducts.length){
+  } else if (!allProducts.length) {
     renderValue = (
       <p className="w-full text-center col-span-4 font-bold text-xl capitalize">
-        There Is No Product
+        loading...
       </p>
     );
   }

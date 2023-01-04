@@ -1,15 +1,13 @@
 import { useState } from "react";
-import {
-  FaBars,
-  FaSearch,
-  FaShoppingBasket,
-  FaRegHeart,
-  FaTimes,
-} from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import Backdrop from "../Backdrop/Backdrop";
 import Cart from "../Cart/Cart";
+import MobileMenu from "../MobileMenu/MobileMenu";
+import NavbarIcons from "../NavbarIcons/NavbarIcons";
+import NavbarList from "../NavbarList/NavbarList";
+import Search from "../Search/Search";
 
 const Navbar = ({ setFixed }) => {
   const [isShow, setIsShow] = useState(false);
@@ -43,127 +41,13 @@ const Navbar = ({ setFixed }) => {
             </Link>
           </div>
 
-          {/* navbar list */}
-          <ul className="px-10 text-lg hidden lg:flex flex-1 gap-x-4  items-center justify-around w-full">
-            <li className="py-2 hover:font-bold">
-              <NavLink end to={{ pathname: "/products", search: "gender=men" }}>
-                Men
-              </NavLink>
-            </li>
-            <li className="py-2 hover:font-bold">
-              <NavLink to={{ pathname: "/products", search: "gender=women" }}>
-                Women
-              </NavLink>
-            </li>
-            <li className="py-2 hover:font-bold">Shipping</li>
-            <li className="py-2 hover:font-bold">Clearance</li>
-            <li className="py-2 hover:font-bold">Lifestyle</li>
-            <li className="py-2 hover:font-bold">Contact</li>
-            <li className="py-2 hover:font-bold">Article</li>
-          </ul>
-
-          {/* _____serarch_____ */}
-          <div className="flex items-center mx-2 bg-gray rounded-full overflow-hidden p-2">
-            <input
-              type="search"
-              className="bg-gray border-none outline-none px-2 w-full"
-              placeholder="Search ..."
-            />
-            <span className="text-lightGray">
-              <FaSearch />
-            </span>
-          </div>
-
-          {/* _____navbar icons_____ */}
-          <div className="flex items-center gap-x-2 text-lg">
-            <button className="relative" onClick={displayCart}>
-              <FaShoppingBasket />
-              <span
-                className={`${
-                  cart.cart.length
-                    ? "absolute -top-4 bg-primaryYellow rounded-full w-5 h-5 text-xs flex justify-center items-center"
-                    : "hidden"
-                }`}
-              >
-                {cart.cart.length}
-              </span>
-            </button>
-            <Link to="/favourite">
-              <button className="relative">
-                <span
-                  className={`${
-                    fav.length
-                      ? "absolute -top-4 bg-primaryYellow rounded-full w-5 h-5 text-xs flex justify-center items-center"
-                      : "hidden"
-                  }`}
-                >
-                  {fav.length}
-                </span>
-                <FaRegHeart />
-              </button>
-            </Link>
-          </div>
+          <NavbarList />
+          <Search />
+          <NavbarIcons cart={cart} fav={fav} displayCart={displayCart} />
         </nav>
       </div>
 
-      {/* _____mobile navbar list_____ */}
-      <div
-        className={`bg-darkGray text-lightGray fixed top-0 bottom-0 -left-[100vh]  p-2 w-60 transition-all duration-300 z-40 ${
-          isShow ? "-left-0 " : ""
-        } lg:hidden`}
-      >
-        <button className="text-2xl lg:hidden" onClick={displayMenu}>
-          <FaTimes />
-        </button>
-        <ul className="p-4 text-lg lg:flex lg:gap-x-4  lg:items-center lg:justify-around lg:p-0 w-full">
-          <li
-            className="border-b py-2 hover:font-bold"
-            onClick={displayMenu}
-          >
-            <NavLink to={{ pathname: "/products", search: "gender=men" }}>
-              Men
-            </NavLink>
-          </li>
-          <li
-            className="border-b py-2 hover:font-bold"
-            onClick={displayMenu}
-          >
-            <NavLink to={{ pathname: "/products", search: "gender=women" }}>
-              Women
-            </NavLink>
-          </li>
-          <li
-            className="border-b py-2 hover:font-bold"
-            onClick={displayMenu}
-          >
-            Shipping
-          </li>
-          <li
-            className="border-b py-2 hover:font-bold"
-            onClick={displayMenu}
-          >
-            Clearance
-          </li>
-          <li
-            className="border-b py-2 hover:font-bold"
-            onClick={displayMenu}
-          >
-            Lifestyle
-          </li>
-          <li
-            className="border-b py-2 hover:font-bold"
-            onClick={displayMenu}
-          >
-            Contact
-          </li>
-          <li
-            className="border-b py-2 hover:font-bold"
-            onClick={displayMenu}
-          >
-            Article
-          </li>
-        </ul>
-      </div>
+      <MobileMenu displayMenu={displayMenu} isShow={isShow} />
       <Cart
         showCart={showCart}
         setShowCart={setShowCart}
