@@ -13,19 +13,24 @@ const ProductsPage = () => {
   const [allProducts, setAllProducts] = useState([]);
   const [error, setError] = useState(false);
   const [colsNum, setColsNum] = useState(null);
+  const data = location.state ? location.state.products : false;
 
   useEffect(() => {
     const getAllProducts = async () => {
-      try {
-        const { data } = await getAllProductsService();
-        setProducts(data.filter((item) => item.gender === query.gender));
-        setAllProducts(data.filter((item) => item.gender === query.gender));
-      } catch (error) {
-        setError(true);
+      if (data) {
+        setAllProducts(data);
+      } else {
+        try {
+          const { data } = await getAllProductsService();
+          setProducts(data.filter((item) => item.gender === query.gender));
+          setAllProducts(data.filter((item) => item.gender === query.gender));
+        } catch (error) {
+          setError(true);
+        }
       }
     };
     getAllProducts();
-  }, [location.search]);
+  }, [location.search, data]);
 
   const sortProductsHandler = (e) => {
     const value = e.target.value;
