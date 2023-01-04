@@ -9,7 +9,7 @@ const CheckoutPage = () => {
     <section className="p-4  rounded-md sm:flex justify-between max-w-3xl sm:mx-auto sm:my-20 sm:gap-x-2">
       <div className="flex-1 border border-lightGray p-4 rounded-md">
         {cart.cart.map((item) => (
-          <CartItem item={item} dispatch={dispatch} />
+          <CartItem key={item.id} item={item} dispatch={dispatch} />
         ))}
       </div>
       <div className="p-4 sm:w-[40%] border border-lightGray h-min rounded-md">

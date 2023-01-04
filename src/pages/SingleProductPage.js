@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import getOneProductService from "../services/getOneProductService";
 import ImageSlider from "../components/ImageSlider/ImageSlider";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart,FaHeart } from "react-icons/fa";
 import RadioBtns from "../common/RadioBtns/RadioBtns";
 import ProductDescription from "../components/ProductDescription/ProductDescription";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cart/cartActions";
 import checkInCart from "../utils/checkInCart";
+import { addToFav } from "../redux/fav/favActions";
 
 const SingleProductPage = () => {
   const params = useParams();
@@ -24,7 +25,10 @@ const SingleProductPage = () => {
   const [sizeValue, setSizeValue] = useState("");
 
   const cart = useSelector((state) => state.cart);
+  const fav = useSelector((state)=> state.fav.favProducts)
   const dispatch = useDispatch();
+
+  console.log(fav);
 
   const nextSlide = () => {
     setCurrent(current === productImages.length - 1 ? 0 : current + 1);
@@ -62,7 +66,10 @@ const SingleProductPage = () => {
           <h2 className="text-xl font-bold uppercase">{product.title}</h2>
           <div className="flex items-center gap-x-5">
             <span className="text-xl font-bold">${product.price}</span>
-            <button className="flex items-center gap-x-2 font-bold">
+            <button
+              className="flex items-center gap-x-2 font-bold"
+              onClick={() => dispatch(addToFav(product))}
+            >
               <FaRegHeart />
               Add To WishList
             </button>
