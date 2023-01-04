@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL ="http://localhost:3001";
+axios.defaults.baseURL ="https://my-json-server.typicode.com/sepidehbiglarizadeh/Krconex";
 
 const http = {
   get: axios.get,
