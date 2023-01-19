@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="sm:flex mb-2">
-      <div className="relative -z-0">
+    <section className="sm:flex mb-2 min-h-[500px] sm:min-h-[478px]">
+      <div className="relative -z-0 bg-primaryYellow">
         <img src={femaleImage} alt="womanImage" />
         <button className="bg-white text-darkGray font-bold lg:text-xl uppercase absolute top-1/2 right-[10%] px-4 py-2 rounded-lg">
           <Link to={{ pathname: "/products", search: "gender=women" }}>Shop for her</Link>
